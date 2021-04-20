@@ -105,7 +105,7 @@ function getWinnersByYear(array, getYearsCB, getWinnersCB) {
     return winnerYear;
 }
 
-console.log(fifaData, getYears, getWinners);
+// console.log(getWinnersByYear(fifaData, getYears, getWinners));
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Use the higher order function getAverageGoals to do the following: 
@@ -118,11 +118,14 @@ Use the higher order function getAverageGoals to do the following:
 */
 
 function getAverageGoals(getFinalsCB) {
-   /* code here */
+   const totalGoals = getFinalsCB.reduce(function(acc, item){
+       return acc + item['Home Team Goals'] + item['Away Team Goals'];
+   },0);
+   const averageGoals = totalGoals / getFinalsCB.length;
+   return averageGoals.toFixed(2);
 }
 
-
-
+console.log(getAverageGoals(getFinals(fifaData)));
 
 /// 🥅 STRETCH 🥅 ///
 
